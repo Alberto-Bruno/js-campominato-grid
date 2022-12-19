@@ -31,17 +31,33 @@ const grid = document.getElementById('grid');
 const playButton = document.getElementById("play-button");
 
 function play() {
+    const createCell = (number) => {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.append(number);
+        
+        return cell;
+    }
+
+    // Funxione per gestire il click delle celle
+    const oneCellClick = (event) => {
+        const cell = event.target;
+        cell.classList.add('clicked');
+        console.log(cell.innerText);
+    }
+    
     // Cambio il testo button in 'Ricomincia'
     playButton.innerText = 'Ricomincia';
-
+    
     // Svuotiamo la griglia
     grid.innerHTML = '';
 
-    // Svolgimento
-    for(let i = 1; i <= 100; i++) {
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
-        cell.append(i);
+    // Svolgimento 
+    for (let i = 1; i <= 100; i++) {
+        const cell = createCell(i);
+
+        cell.addEventListener('click', oneCellClick);
+
         grid.appendChild(cell);
     }
 }
