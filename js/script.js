@@ -30,16 +30,20 @@ BONUS
 const grid = document.getElementById('grid');
 const playButton = document.getElementById("play-button");
 
+function play() {
+    // Cambio il testo button in 'Ricomincia'
+    playButton.innerText = 'Ricomincia';
 
-// Impostazioni iniziali
-const rows = 8;
-const cols = 8;
-const totalCells = rows * cols; 
+    // Svuotiamo la griglia
+    grid.innerHTML = '';
 
-// Rendirizziamo le celle 
-for (let i = 0; 1 < totalCells; i++) {
-    // creo una cella 
-    const cell = createCell(i);
-    // applico event listener alla cella
-    cell.addEventListner("")
+    // Svolgimento
+    for(let i = 1; i <= 100; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.append(i);
+        grid.appendChild(cell);
+    }
 }
+
+playButton.addEventListener('click', play);
