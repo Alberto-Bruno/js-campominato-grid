@@ -39,13 +39,6 @@ function play() {
         return cell;
     }
 
-    // Funxione per gestire il click delle celle
-    const oneCellClick = (event) => {
-        const cell = event.target;
-        cell.classList.add('clicked');
-        console.log(cell.innerText);
-    }
-    
     // Cambio il testo button in 'Ricomincia'
     playButton.innerText = 'Ricomincia';
     
@@ -56,7 +49,10 @@ function play() {
     for (let i = 1; i <= 100; i++) {
         const cell = createCell(i);
 
-        cell.addEventListener('click', oneCellClick);
+        cell.addEventListener('click', function () {
+            cell.classList.add('clicked');
+            console.log(i);
+        })
 
         grid.appendChild(cell);
     }
